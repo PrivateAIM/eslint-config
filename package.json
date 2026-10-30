@@ -4,8 +4,9 @@
     "type": "module",
     "description": "Shared ESLint flat config for PrivateAIM projects",
     "author": {
-        "name": "PrivateAIM",
-        "url": "https://privateaim.github.io"
+        "name": "Peter Placzek",
+        "email": "contact@tada5hi.net",
+        "url": "https://tada5hi.net"
     },
     "repository": {
         "type": "git",
