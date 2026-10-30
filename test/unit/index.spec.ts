@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { add } from '../../src';
+import eslintConfig from '../../src/index.ts';
 
 describe('src/index.ts', () => {
-    it('should add numbers', () => {
-        const result = add(1, 2);
-        expect(result).toEqual(3);
+    it('delegates to the base ESLint config', async () => {
+        const result = await eslintConfig();
+
+        expect(result.length).toBeGreaterThan(0);
     });
 });

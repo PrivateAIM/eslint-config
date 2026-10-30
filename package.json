@@ -1,17 +1,20 @@
 {
-    "name": "typescript-template",
+    "name": "@privateaim/eslint-config",
     "version": "0.0.0",
     "type": "module",
-    "description": "",
+    "description": "Shared ESLint flat config for PrivateAIM projects",
     "author": {
-        "name": "Peter Placzek",
-        "email": "contact@tada5hi.net",
-        "url": "https://github.com/tada5hi"
+        "name": "PrivateAIM",
+        "url": "https://privateaim.github.io"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/tada5hi/typescript-template.git"
+        "url": "https://github.com/PrivateAIM/eslint-config.git"
     },
+    "bugs": {
+        "url": "https://github.com/PrivateAIM/eslint-config/issues"
+    },
+    "homepage": "https://github.com/PrivateAIM/eslint-config#readme",
     "main": "dist/index.mjs",
     "types": "dist/index.d.mts",
     "exports": {
@@ -25,24 +28,41 @@
         "dist"
     ],
     "engines": {
-        "node": ">=22.0.0"
+        "node": ">=24.3.0"
     },
     "scripts": {
-        "build": "tsdown",
+        "build": "tsc --noEmit -p tsconfig.build.json && tsdown",
         "test": "vitest --config test/vitest.config.ts --run",
         "test:coverage": "vitest --config test/vitest.config.ts --run --coverage",
         "lint": "eslint",
         "lint:fix": "npm run lint -- --fix",
         "prepare": "husky"
     },
-    "keywords": [],
+    "keywords": [
+        "eslint",
+        "config",
+        "eslintconfig",
+        "flat-config",
+        "javascript",
+        "typescript",
+        "vue",
+        "privateaim"
+    ],
     "publishConfig": {
         "access": "public"
     },
-    "license": "MIT",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@tada5hi/eslint-config": "^3.2.0"
+    },
+    "peerDependencies": {
+        "eslint": ">=10.4.0",
+        "eslint-plugin-vue": ">=10.0.0",
+        "typescript-eslint": ">=8.57.0"
+    },
     "devDependencies": {
         "@tada5hi/commitlint-config": "^1.3.2",
-        "@tada5hi/eslint-config": "^2.4.0",
+        "@tada5hi/eslint-config": "^3.2.0",
         "@tada5hi/tsconfig": "^0.7.2",
         "@vitest/coverage-v8": "^5.0.5",
         "eslint": "^10.12.0",

@@ -1,8 +1,8 @@
 <!-- NOTE: Keep this file and all corresponding files in the .agents directory updated as the project evolves. When making architectural changes, adding new patterns, or discovering important conventions, update the relevant sections. -->
 
-# typescript-template — Agent Guide
+# PrivateAIM ESLint Config — Agent Guide
 
-A minimal, opinionated scaffold for publishing ESM-only TypeScript libraries to npm. It is a **template repository**: new packages are created from it and then have their `src/` replaced with real code. The shipped `src/index.ts` (a single `add()` function) and its spec exist only to prove the toolchain works end to end — build, test, coverage, lint, release.
+A small ESM-only TypeScript library that exposes PrivateAIM's ESLint flat config as a thin decorator around `@tada5hi/eslint-config`. It preserves the base factory's options and user overrides.
 
 Because this repository is consumed by copying, changes here propagate to every downstream project. Prefer changes that stay generic; resist adding domain-specific code, runtime dependencies, or opinionated abstractions.
 

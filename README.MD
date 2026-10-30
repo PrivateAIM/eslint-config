@@ -1,43 +1,77 @@
 <p align="center">
-    <img src=".github/assets/logo.svg" alt="" width="96" height="96">
+    <img src=".github/assets/logo.svg" alt="@privateaim/eslint-config" width="96" height="96">
 </p>
 
-<h1 align="center">typescript-template</h1>
+<h1 align="center">@privateaim/eslint-config</h1>
 
 <p align="center">
-    <a href="https://npmjs.com/package/typescript-template"><img src="https://badge.fury.io/js/typescript-template.svg" alt="npm version"></a>
-    <a href="https://codecov.io/gh/Tada5hi/typescript-template"><img src="https://codecov.io/gh/Tada5hi/typescript-template/branch/master/graph/badge.svg?token=4KNSG8L13V" alt="Coverage"></a>
-    <a href="https://github.com/Tada5hi/typescript-template"><img src="https://github.com/Tada5hi/typescript-template/workflows/CI/badge.svg" alt="Master Workflow"></a>
-    <a href="https://snyk.io/test/github/Tada5hi/typescript-template?targetFile=package.json"><img src="https://snyk.io/test/github/Tada5hi/typescript-template/badge.svg?targetFile=package.json" alt="Known Vulnerabilities"></a>
-    <a href="https://conventionalcommits.org"><img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&amp;logoColor=white" alt="Conventional Commits"></a>
+    <b>Shared ESLint flat config for PrivateAIM projects.</b>
 </p>
 
-This is a package to ...
+<p align="center">
+    <a href="https://www.npmjs.com/package/@privateaim/eslint-config"><img src="https://img.shields.io/npm/v/@privateaim/eslint-config" alt="npm version"></a>
+    <a href="https://github.com/PrivateAIM/eslint-config/actions/workflows/main.yml"><img src="https://github.com/PrivateAIM/eslint-config/actions/workflows/main.yml/badge.svg" alt="CI"></a>
+    <a href="https://github.com/PrivateAIM/eslint-config/blob/master/LICENSE"><img src="https://img.shields.io/github/license/PrivateAIM/eslint-config" alt="license"></a>
+</p>
 
-**Table of Contents**
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+A small PrivateAIM-specific entry point around [`@tada5hi/eslint-config`](https://github.com/tada5hi/javascript/tree/master/packages/eslint-config). It preserves the base config's options and user overrides while leaving room for organization-specific defaults later.
 
 ## Installation
 
 ```bash
-npm install typescript-template --save
+npm install --save-dev @privateaim/eslint-config eslint
 ```
+
+For TypeScript projects, also install `typescript-eslint` and `typescript`. For Vue projects, install `eslint-plugin-vue`.
 
 ## Usage
 
-...
+Create an `eslint.config.js` or `eslint.config.mjs`:
+
+```js
+import eslintConfig from '@privateaim/eslint-config';
+
+export default [
+    ...await eslintConfig({
+        typescript: true,
+    }),
+    { ignores: ['dist/**'] },
+];
+```
+
+The factory accepts the same options as `@tada5hi/eslint-config`:
+
+```js
+import eslintConfig from '@privateaim/eslint-config';
+
+export default await eslintConfig({
+    typescript: { project: true },
+    vue: true,
+}, {
+    rules: {
+        'no-console': 'off',
+    },
+});
+```
+
+## API
+
+```ts
+import type { Linter } from 'eslint';
+import type { FactoryOptions } from '@privateaim/eslint-config';
+
+export default function eslintConfig(
+    options?: FactoryOptions,
+    ...userConfigs: Linter.Config[]
+): Promise<Linter.Config[]>;
+```
+
+`FactoryOptions` supports `typescript` and `vue` as booleans or option objects. User configs are appended after the shared rules, so they can override them.
 
 ## Contributing
 
-Before starting to work on a pull request, it is important to review the guidelines for
-[contributing](./CONTRIBUTING.md) and the [code of conduct](./CODE_OF_CONDUCT.md).
-These guidelines will help to ensure that contributions are made effectively and are accepted.
+Before starting work on a pull request, review the [contributing guide](./CONTRIBUTING.md) and [code of conduct](./CODE_OF_CONDUCT.md).
 
 ## License
 
-Made with 💚
-
-Published under [MIT License](./LICENSE).
+Published under the [Apache-2.0 License](./LICENSE).

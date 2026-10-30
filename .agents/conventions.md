@@ -105,13 +105,11 @@ Config lives in `release-please-config.json` (`release-type: node`, `include-v-i
 
 ## Using This Template
 
-This repository is a starting point, not a library. When bootstrapping a new project from it:
+This package follows the template's conventions while keeping its implementation intentionally small:
 
-1. Replace `name`, `description`, `keywords`, and repository URLs in `package.json`.
-2. Replace `src/index.ts` and `test/unit/index.spec.ts` with real code.
-3. Update `README.MD` — the badge URLs all embed `typescript-template` and the Codecov token.
-4. Reset `.release-please-manifest.json` to `0.0.0` if it has drifted.
-5. Update `AGENTS.md` and `.agents/*.md` to describe the new project.
+1. Keep the public wrapper in `src/index.ts` and shared type aliases in `src/types.ts`.
+2. Delegate all behavior to `@tada5hi/eslint-config`; organization-specific rules belong in a future change.
+3. Keep README examples and package metadata aligned with the exported factory.
 
 ## Best Practices
 

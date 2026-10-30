@@ -5,7 +5,7 @@ Single npm package — no workspaces, no monorepo tooling.
 ## Directory Layout
 
 ```
-typescript-template/
+/eslint-config/
 ├── src/
 │   └── index.ts                     # Public entry point; everything exported here is public API
 ├── test/
